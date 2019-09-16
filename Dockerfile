@@ -38,15 +38,8 @@ RUN ["/bin/bash", "-c", "curl https://storage.googleapis.com/golang/go1.10.linux
     tar -xvf go1.10.linux-amd64.tar.gz && \
     chown -R root:root ./go && \
     mv go /usr/local"]
-
-# RUN echo 'export GOPATH=/root/go' >> ~/.bashrc && \
-#     echo 'export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.bashrc
-
-# RUN ["/bin/bash", "-c", "cat ~/.bashrc"]
-# RUN ["/bin/bash", "-c", "source ~/.bashrc"]
+    
 RUN ["/bin/bash", "-c", "ln -s /usr/local/go/bin/go /usr/bin/go"]
-# RUN ["/bin/bash", "-c", "go version"]
-# RUN ["/bin/bash", "-c", "go env"]
 
 # Install conmon
 RUN git clone https://github.com/containers/conmon && \
@@ -77,7 +70,3 @@ RUN git clone https://github.com/containers/libpod/ $GOPATH/src/github.com/conta
 	cd $GOPATH/src/github.com/containers/libpod && \
 	make && \
 	make install
-
-RUN podman version && podman info
-# RUN alias docker=podman
-# RUN docker version && docker info
