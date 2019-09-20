@@ -34,10 +34,10 @@ RUN apt -y install \
   libapparmor-dev
 
 # Install go
-RUN ["/bin/bash", "-c", "curl https://storage.googleapis.com/golang/go1.10.linux-amd64.tar.gz -o go1.10.linux-amd64.tar.gz && \
+RUN curl https://storage.googleapis.com/golang/go1.10.linux-amd64.tar.gz -o go1.10.linux-amd64.tar.gz && \
     tar -xvf go1.10.linux-amd64.tar.gz && \
     chown -R root:root ./go && \
-    mv go /usr/local"]
+    mv go /usr/local
     
 RUN ["/bin/bash", "-c", "ln -s /usr/local/go/bin/go /usr/bin/go"]
 
