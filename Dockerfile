@@ -70,3 +70,5 @@ RUN git clone https://github.com/containers/libpod/ $GOPATH/src/github.com/conta
 	cd $GOPATH/src/github.com/containers/libpod && \
 	make && \
 	make install
+
+RUN echo 'alias docker=podman' >> ~/.bashrc
